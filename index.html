@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlgebraLab</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>AlgebraLab</h1>
+    <p id="judul-aktivitas"></p>
+  </header>
+
+  <main class="layout">
+    <section class="materi" aria-labelledby="judul-halaman">
+      <p id="penanda" class="penanda"></p>
+      <h2 id="judul-halaman" tabindex="-1"></h2>
+      <div id="isi"></div>
+      <div id="petunjuk"></div>
+      <div id="pertanyaan"></div>
+      <nav class="nav" aria-label="Navigasi halaman">
+        <button id="sebelumnya" type="button">Sebelumnya</button>
+        <span id="titik" class="titik"></span>
+        <button id="berikutnya" type="button">Berikutnya</button>
+      </nav>
+    </section>
+
+    <section class="kanvas" aria-label="Kanvas Polypad">
+      <div class="alat">
+        <span id="hitung" class="hitung"></span>
+        <button id="periksa" type="button">Periksa keping</button>
+        <button id="reset" type="button">Ulangi kanvas</button>
+      </div>
+      <p id="umpan" role="status"></p>
+      <div id="polypad"></div>
+    </section>
+  </main>
+
+  <!-- config.js: isi API key Polypad (lihat README.md). Skrip Polypad dimuat oleh js/polypad-adapter.js ke <body>. -->
+  <script src="config.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

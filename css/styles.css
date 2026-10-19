@@ -1,0 +1,45 @@
+:root {
+  --tinta: #1b2a49; --biru: #2457c5; --kuning: #ffd84d; --kertas: #fbfaf5; --garis: #d6dcec; --putih: #fff;
+  font-family: ui-rounded, "Segoe UI", system-ui, sans-serif; font-size: 17px; color: var(--tinta);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #cfd8ea; line-height: 1.55; }
+.bar { background: var(--tinta); color: #fff; padding: .7rem 1rem; display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+.bar h1 { margin: 0; font-size: 1.3rem; } .bar p { margin: 0; opacity: .85; font-size: .95rem; }
+.layout { position: relative; perspective: 1800px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0; max-width: 1300px; margin: 1.2rem auto; background: var(--kertas); border-radius: 14px; box-shadow: 0 0 0 8px #2f3f66, 0 20px 40px rgba(27, 42, 73, .35); }
+.layout::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(500% / 12); width: 40px; transform: translateX(-50%); background: linear-gradient(90deg, transparent, rgba(27, 42, 73, .2) 50%, transparent); pointer-events: none; z-index: 2; }
+.materi, .kanvas { background: var(--putih); padding: 1.2rem 1.6rem; }
+.materi { border-radius: 14px 0 0 14px; transform-origin: right center; backface-visibility: hidden; }
+.kanvas { border-radius: 0 14px 14px 0; background: var(--kertas); }
+.materi.maju { animation: balik-maju .45s ease-out; }
+.materi.mundur { animation: balik-mundur .45s ease-out; }
+@keyframes balik-maju { from { transform: rotateY(-75deg); opacity: .2; } to { transform: none; opacity: 1; } }
+@keyframes balik-mundur { from { transform: rotateY(75deg); opacity: .2; } to { transform: none; opacity: 1; } }
+.materi { background-image: linear-gradient(var(--garis) 1px, transparent 1px); background-size: 100% 1.55rem; background-color: var(--putih); }
+.materi > * { background: color-mix(in srgb, var(--putih) 88%, transparent); }
+.penanda { margin: 0 0 .2rem; color: var(--biru); font-weight: 700; }
+h2 { margin: 0 0 .6rem; font-size: 1.4rem; } h3 { margin: .8rem 0 .3rem; font-size: 1.05rem; }
+ol { padding-left: 1.3rem; } li { margin-bottom: .3rem; }
+.soal { display: block; margin-top: .9rem; font-weight: 700; }
+textarea { display: block; width: 100%; margin-top: .3rem; padding: .6rem; font: inherit; font-weight: 400; border: 2px solid var(--garis); border-radius: 8px; resize: vertical; }
+button { font: inherit; font-weight: 700; padding: .55rem 1rem; border: 2px solid var(--biru); border-radius: 8px; background: var(--biru); color: #fff; cursor: pointer; min-height: 44px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.alat button, .nav .titik button { background: var(--putih); color: var(--biru); }
+:focus-visible { outline: 3px solid var(--kuning); outline-offset: 2px; box-shadow: 0 0 0 5px var(--tinta); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: 1.2rem; }
+.titik { display: flex; gap: .4rem; }
+.titik button { width: 22px; min-height: 22px; padding: 0; border-radius: 50%; }
+.titik button.aktif { background: var(--biru); }
+.alat { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.hitung { flex: 1; min-width: 12rem; font-weight: 700; }
+#umpan { min-height: 1.5rem; margin: .5rem 0; font-weight: 700; }
+#polypad { width: 100%; height: 560px; border: 2px solid var(--garis); border-radius: 8px; overflow: hidden; }
+.placeholder { padding: 1.2rem; background: #fff8dc; height: 100%; }
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; margin: .8rem; }
+  .layout::before { display: none; }
+  .materi { border-radius: 14px 14px 0 0; }
+  .kanvas { border-radius: 0 0 14px 14px; }
+  #polypad { height: 480px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .materi { animation: none !important; } }
